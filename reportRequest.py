@@ -6,7 +6,7 @@ class ReportRequest (dict):
     def __init__(self,
                  viewID: str,
                  dateRanges: list =[],
-                 samplingLevel: str ='',
+                 samplingLevel: SamplingLevel =None,
                  dimensions: list =[],
                  dimensionFilterClauses: list =[],
                  metrics: list =[],
@@ -47,7 +47,7 @@ class DateRange(dict):
         self['endDate'] = endDate
 
 @unique
-class SamplingLevel(StrEnum):
+class SamplingLevel(str, Enum):
     SAMPLING_UNSPECIFIED = 'SAMPLING_UNSPECIFIED',
     DEFAULT = 'DEFAULT',
     SMALL = 'SMALL',
@@ -59,29 +59,6 @@ class Dimension(dict):
         self['name'] = name
         self['histogramBuckets'] = histogramBuckets
 
-class DimensionFilterClauses(dict):
-
-    def __init__(self, operator: str ='OR', filters: list =[]):
-        self['operator'] = operator
-        self['filters'] = filters
-
-    def addDimensionFilter(self, dimensionName: str, Not: bool =False,
-                           operator: str ='', expressions: list =[],
-                           caseSensitive: bool =False):
-        newDimensionFilter = DimensionFilter(dimensionName, Not, operator,
-                                             expressions, caseSensitive)
-        self['filters'].append(newDimensionFilter)
-
-class DimensionFilter(dict):
-
-    def __init__(self, dimensionName: str, Not: bool =False,
-                 operator: str ='', expressions: list =[],
-                 caseSensitive: bool =False):
-        self['dimensionName'] = dimensionName
-        self['not'] = Not
-        self['operator'] = operator
-        self['expressions'] = expressions
-        self['caseSensitive'] = caseSensitive
 
 class Metric(dict):
 
