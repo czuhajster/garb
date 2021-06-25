@@ -1,5 +1,23 @@
 from enum import *
-from Operator import Operator
+
+class Dimension (dict):
+
+    def __init__(self, name: str ='', histrogramBuckets: list =[]):
+        self['name'] = name
+        self['histrogramBuckets'] = histrogramBuckets
+
+
+class Operator(str, Enum):
+    OPERATOR_UNSPECIFIED = "OPERATOR_UNSPECIFIED",
+    REGEXP = "REGEXP",
+    BEGINS_WITH = "BEGINS_WITH",
+    ENDS_WITH = "ENDS_WITH",
+    PARTIAL = "PARTIAL",
+    EXACT = "EXACT",
+    NUMERIC_EQUAL = "NUMERIC_EQUAL",
+    NUMERIC_GREATER_THAN = "NUMERIC_GREATER_THAN",
+    NUMERIC_LESS_THAN = "NUMERIC_LESS_THAN",
+    IN_LIST = "IN_LIST"
 
 class FilterLogicalOperator (Enum):
     OPERATOR_UNSPECIFIED = "OPERATOR_UNSPECIFIED",

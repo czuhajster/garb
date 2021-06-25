@@ -1,4 +1,5 @@
 from enum import *
+from order import *
 
 
 class ReportRequest (dict):
@@ -52,20 +53,6 @@ class SamplingLevel(str, Enum):
     DEFAULT = 'DEFAULT',
     SMALL = 'SMALL',
     LARGE = 'LARGE'
-
-class Dimension(dict):
-
-    def __init__(self, name: str, histogramBuckets: list =[]):
-        self['name'] = name
-        self['histogramBuckets'] = histogramBuckets
-
-
-class Metric(dict):
-
-    def __init__(self, expression: str, alias: str ='', formattingType: str =''):
-        self['expression'] = expression
-        self['alias'] = alias
-        self['formattingType'] = formattingType
 
 class RequestBody (dict):
 
