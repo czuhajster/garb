@@ -11,4 +11,4 @@ Currently, the only installation method is cloning the repository:
 
 ## License
 
-GARB is licensed under [MIT License](https://github.com/czuhajster/garb/blob/main/LICENSE.md)
+GARB is licensed under [MIT License](https://github.com/czuhajster/garb/blob/main/LICENSE.md).
