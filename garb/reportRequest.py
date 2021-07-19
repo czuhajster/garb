@@ -3,7 +3,20 @@ from enum import Enum
 from order import *
 from metric import *
 from dimension import *
+from pivot import *
 
+class DateRange(dict):
+
+    def __init__(self, startDate: str, endDate: str):
+        """Initialise attributes in format 'YYYY-MM-DD'"""
+        self['startDate'] = startDate
+        self['endDate'] = endDate
+
+class Sampling(Enum):
+    DEFAULT = 'DEFAULT',
+    SMALL = 'SMALL',
+    LARGE = 'LARGE',
+    SAMPLING_UNSPECIFIED = 'DEFAULT'
 
 class ReportRequest (dict):
 
@@ -18,8 +31,8 @@ class ReportRequest (dict):
                  filtersExpression: str ='',
                  orderBys: list[OrderBy] =[],
                  segments: list =[],
-                 pivots: list =[],
-                 cohortGroup: str = '',
+                 pivots: list[Pivot] =[],
+                 cohortGroup: CohortGroup =None,
                  pageToken: str =None,
                  pageSize: int =None,
                  includeEmptyRows: bool =False,
@@ -42,19 +55,6 @@ class ReportRequest (dict):
         self['includeEmptyRows'] = includeEmptyRows
         self['hideTotals'] = hideTotals
         self['hideValueRanges'] = hideValueRanges
-
-class DateRange(dict):
-
-    def __init__(self, startDate: str, endDate: str):
-        """Initialise attributes in format 'YYYY-MM-DD'"""
-        self['startDate'] = startDate
-        self['endDate'] = endDate
-
-class Sampling(Enum):
-    DEFAULT = 'DEFAULT',
-    SMALL = 'SMALL',
-    LARGE = 'LARGE',
-    SAMPLING_UNSPECIFIED = 'DEFAULT'
 
 class RequestBody (dict):
 

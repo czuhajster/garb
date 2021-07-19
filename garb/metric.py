@@ -54,6 +54,3 @@ class MetricFilterClause (dict):
                  filters: list[MetricFilter]= []) -> None:
         self['operator'] = operator
         self['filters'] = filters
-
-if __name__ == "__main__":
-    metric = Metric(40, '', False)
