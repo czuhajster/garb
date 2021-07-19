@@ -1,24 +1,27 @@
-from enum import *
+from enum import Enum
+
 from order import *
+from metric import *
+from dimension import *
 
 
 class ReportRequest (dict):
 
     def __init__(self,
                  viewID: str,
-                 dateRanges: list =[],
-                 samplingLevel: SamplingLevel =None,
-                 dimensions: list =[],
-                 dimensionFilterClauses: list =[],
-                 metrics: list =[],
-                 metricFilterClauses: list = [],
+                 dateRanges: list[DateRange] =[],
+                 samplingLevel: Sampling =Sampling.SAMPLING_UNSPECIFIED,
+                 dimensions: list[Dimension] =[],
+                 dimensionFilterClauses: list[DimensionFilterClause] =[],
+                 metrics: list[Metric] =[],
+                 metricFilterClauses: list[MetricFilterClause]= [],
                  filtersExpression: str ='',
-                 orderBys: list =[],
+                 orderBys: list[OrderBy] =[],
                  segments: list =[],
                  pivots: list =[],
                  cohortGroup: str = '',
                  pageToken: str =None,
-                 pageSize: str =None,
+                 pageSize: int =None,
                  includeEmptyRows: bool =False,
                  hideTotals: bool =False,
                  hideValueRanges: bool =False):
@@ -47,17 +50,16 @@ class DateRange(dict):
         self['startDate'] = startDate
         self['endDate'] = endDate
 
-@unique
-class SamplingLevel(str, Enum):
-    SAMPLING_UNSPECIFIED = 'SAMPLING_UNSPECIFIED',
+class Sampling(Enum):
     DEFAULT = 'DEFAULT',
     SMALL = 'SMALL',
-    LARGE = 'LARGE'
+    LARGE = 'LARGE',
+    SAMPLING_UNSPECIFIED = 'DEFAULT'
 
 class RequestBody (dict):
 
     def __init__(self,
-                 reportRequests: list =[],
+                 reportRequests: list[ReportRequest] =[],
                  useResourceQuotas: bool =False):
         self['reportRequests'] = reportRequests
         self['useResourceQuotas'] = useResourceQuotas
@@ -65,16 +67,3 @@ class RequestBody (dict):
     def addReportRequest(self, reportRequest: ReportRequest =None):
         if reportRequest is not None:
             self['reportRequests'].append(reportRequest)
-
-# Add abstract class
-
-newDateRange = DateRange('2021-01-01', '2021-01-31')
-dimension = Dimension('ga:day')
-dimensionFilterClauses = DimensionFilterClauses()
-dimensionFilterClauses.addDimensionFilter('ga:eventLabel', False, 'EXACT',
-                                          ['Service form'])
-metric = Metric('ga:totalEvent', formattingType='INTEGER')
-newReportRequest = ReportRequest('161838420', [newDateRange], [dimension],
-                                 dimensionFilterClauses, [metric])
-
-print(newReportRequest)
