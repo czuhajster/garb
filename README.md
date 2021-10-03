@@ -3,7 +3,7 @@
 ![Code Size](https://img.shields.io/github/languages/code-size/czuhajster/garb)
 ![Last Commit](https://img.shields.io/github/last-commit/czuhajster/garb)
 
-GARB is a small library that provides a comfortable way of building a Request
+GARB is a small Python library that provides a comfortable way of building a Request
 Body for Google Analytics Reporting API v4.
 
 ## Installation
@@ -13,13 +13,6 @@ Body for Google Analytics Reporting API v4.
 Install `garb` using [pip](https://pip.pypa.io/en/stable/quickstart/):
 
     pip install garb
-
-### From Source
-
-Alternatively, you can install `garb` from source:
-
-    git clone https://github.com/czuhajster/garb
-
 
 ## License
 
