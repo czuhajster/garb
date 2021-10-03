@@ -1,5 +1,5 @@
-from dimension import Dimension, DimensionFilterClause
-from metric import Metric
+from .dimension import Dimension, DimensionFilterClause
+from .metric import Metric
 
 class Pivot (dict):
 

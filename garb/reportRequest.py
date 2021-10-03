@@ -1,10 +1,11 @@
 from enum import Enum
 
-from daterange import DateRange
-from order import *
-from metric import *
-from dimension import *
-from pivot import *
+from .daterange import DateRange
+from .order import *
+from .metric import *
+from .dimension import *
+from .pivot import *
+from .cohort import *
 
 
 class Sampling(Enum):

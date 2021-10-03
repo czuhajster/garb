@@ -1,6 +1,6 @@
 from enum import Enum
 
-from daterange import DateRange
+from .daterange import DateRange
 
 class Type(Enum):
     FIRST_VISIT_DATE = "FIRST_VISIT_DATE",

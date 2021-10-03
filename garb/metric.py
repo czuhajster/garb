@@ -1,5 +1,6 @@
 from enum import Enum
-from FilterLogicalOperator import FilterLogicalOperator
+
+from .FilterLogicalOperator import FilterLogicalOperator
 
 class MetricType (Enum):
     INTEGER = "INTEGER",

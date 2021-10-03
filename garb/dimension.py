@@ -1,5 +1,6 @@
 from enum import *
-from FilterLogicalOperator import FilterLogicalOperator
+
+from .FilterLogicalOperator import FilterLogicalOperator
 
 class Dimension (dict):
 
