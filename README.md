@@ -1,6 +1,6 @@
 # GARB - Google Analytics Request Builder
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+![Code Size](https://img.shields.io/github/languages/code-size/czuhajster/garb)
 GARB is a small library that provides a comfortable way of building a Request
 Body for Google Analytics Reporting API v4.
 
