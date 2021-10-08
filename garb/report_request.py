@@ -1,4 +1,5 @@
 from enum import Enum
+import json
 
 from .daterange import DateRange
 from .order import *
@@ -61,5 +62,7 @@ class RequestBody (dict):
         self['useResourceQuotas'] = useResourceQuotas
 
     def addReportRequest(self, reportRequest: ReportRequest =None):
-        if reportRequest is not None:
             self['reportRequests'].append(reportRequest)
+
+    def json(self):
+        return json.dumps(self)
