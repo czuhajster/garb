@@ -2,6 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Code Size](https://img.shields.io/github/languages/code-size/czuhajster/garb)
 ![Last Commit](https://img.shields.io/github/last-commit/czuhajster/garb)
+![PyPI Version](https://img.shields.io/pypi/v/garb)
 
 GARB is a small Python library that provides a comfortable way of building a Request
 Body for Google Analytics Reporting API v4.
