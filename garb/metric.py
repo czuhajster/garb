@@ -1,6 +1,13 @@
+"""Metric module
+
+This module defines metric-related objects: MetricType, Metric, MetricOperator,
+MetricFilter, MetricFilterClause.
+"""
+
 from enum import Enum
 
 from .filter_logical_operator import FilterLogicalOperator
+
 
 class MetricType (Enum):
     INTEGER = "INTEGER",
@@ -10,14 +17,22 @@ class MetricType (Enum):
     TIME = "TIME",
     METRIC_TYPE_UNSPECIFIED = "INTEGER",
 
+
 class Metric (dict):
+    """A metric object.
+    """
 
     def __init__(self,
-                 expression: str= '',
-                 alias: str ='',
-                 formattingType: MetricType =MetricType.METRIC_TYPE_UNSPECIFIED) -> None:
+                 expression: str= None,
+                 alias: str = None
+                 formattingType: MetricType =MetricType.METRIC_TYPE_UNSPECIFIED
+    ) -> None:
+        """
+        Initialises a Metric object.
+        """
         self['expression'] = expression
-        self['alias'] = alias
+        if alias is not None:
+            self['alias'] = alias
         self['formattingType'] = formattingType
 
     def setAlias(self, alias: str) -> None:
@@ -29,6 +44,7 @@ class Metric (dict):
     def setFormattingType(self, formattingType: MetricType) -> None:
         self['formattingType'] = formattingType
 
+
 class MetricOperator (Enum):
     EQUAL = "EQUAL",
     LESS_THAN = "LESS_THAN",
@@ -36,22 +52,35 @@ class MetricOperator (Enum):
     IS_MISSING = "IS_MISSING",
     OPERATOR_UNSPECIFIED = "EQUAL",
 
+
 class MetricFilter (dict):
+    """A metric filter object.
+    """
 
     def __init__(self,
-                 metricName: str ='',
+                 metricName: str,
                  Not: bool =False,
-                 operator: MetricOperator =MetricOperator.OPERATOR_UNSPECIFIED,
-                 comparisonValue: str =''):
+                 operator: MetricOperator =MetricOperator.EQUAL,
+                 comparisonValue: str =None
+    ) -> None:
+        """Initialises a metric filter object.
+        """
         self['metricName'] = metricName
         self['not'] = Not
         self['operator'] = operator
         self['comparisonValue'] = comparisonValue
 
+
 class MetricFilterClause (dict):
+    """A metric filter object.
+    """
 
     def __init__(self,
                  operator: FilterLogicalOperator =FilterLogicalOperator.OPERATOR_UNSPECIFIED,
-                 filters: list[MetricFilter]= []) -> None:
+                 filters: list[MetricFilter]= None) -> None:
+        """
+        Initialises a MetricFilterClause object.
+        """
         self['operator'] = operator
-        self['filters'] = filters
+        if filters is not None:
+            self['filters'] = filters
