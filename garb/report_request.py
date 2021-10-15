@@ -71,21 +71,34 @@ class ReportRequest (dict):
         """
         self['viewID'] = viewID
         self['dateRanges'] = dateRanges
-        self['samplingLevel'] = samplingLevel
-        self['dimensions'] = dimensions
-        self['dimensionFilterClauses'] = dimensionFilterClauses
         self['metrics'] = metrics
-        self['metricFilterClauses'] = metricFilterClauses
-        self['filtersExpression'] = filtersExpression
-        self['orderBys'] = orderBys
-        self['segments'] = segments
-        self['pivots'] = pivots
-        self['cohortGroup'] = cohortGroup
-        self['pageToken'] = pageToken
+        if metricFilterClauses is not None:
+            self['metricFilterClauses'] = metricFilterClauses
+        if samplingLevel != Sampling.SAMPLING_UNSPECIFIED:
+            self['samplingLevel'] = samplingLevel
+        if dimensions is not None:
+            self['dimensions'] = dimensions
+        if dimensionFilterClauses is not None:
+            self['dimensionFilterClauses'] = dimensionFilterClauses
+        if filtersExpression is None:
+            self['filtersExpression'] = filtersExpression
+        if orderBys is not None:
+            self['orderBys'] = orderBys
+        if segments is not None:
+            self['segments'] = segments
+        if pivots is not None:
+            self['pivots'] = pivots
+        if cohortGroup is not None:
+            self['cohortGroup'] = cohortGroup
+        if pageToken is not None:
+            self['pageToken'] = pageToken
         self['pageSize'] = pageSize
-        self['includeEmptyRows'] = includeEmptyRows
-        self['hideTotals'] = hideTotals
-        self['hideValueRanges'] = hideValueRanges
+        if not includeEmptyRows:
+            self['includeEmptyRows'] = includeEmptyRows
+        if not hideTotals:
+            self['hideTotals'] = hideTotals
+        if not hideValueRanges:
+            self['hideValueRanges'] = hideValueRanges
 
 class RequestBody (dict):
     """
@@ -93,7 +106,7 @@ class RequestBody (dict):
     """
 
     def __init__(self,
-                 reportRequests: list[ReportRequest] =None,
+                 reportRequests: list[ReportRequest],
                  useResourceQuotas: bool =False
     ) -> None:
         """Initialises a request body object.
@@ -106,7 +119,8 @@ class RequestBody (dict):
           None
         """
         self['reportRequests'] = reportRequests
-        self['useResourceQuotas'] = useResourceQuotas
+        if not useResourceQuotas:
+            self['useResourceQuotas'] = useResourceQuotas
 
     def addReportRequest(self, reportRequest: ReportRequest =None):
         """Appends a report request object to the list of reportRequests.

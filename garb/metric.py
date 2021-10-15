@@ -46,11 +46,11 @@ class Metric (dict):
 
 
 class MetricOperator (Enum):
+    OPERATOR_UNSPECIFIED = "EQUAL",
     EQUAL = "EQUAL",
     LESS_THAN = "LESS_THAN",
     GREATER_THAN = "GREATER_THAN",
     IS_MISSING = "IS_MISSING",
-    OPERATOR_UNSPECIFIED = "EQUAL",
 
 
 class MetricFilter (dict):
@@ -59,16 +59,18 @@ class MetricFilter (dict):
 
     def __init__(self,
                  metricName: str,
+                 comparisonValue: str,
                  Not: bool =False,
-                 operator: MetricOperator =MetricOperator.EQUAL,
-                 comparisonValue: str =None
+                 operator: MetricOperator =MetricOperator.OPERATOR_UNSPECIFIED
     ) -> None:
         """Initialises a metric filter object.
         """
         self['metricName'] = metricName
-        self['not'] = Not
-        self['operator'] = operator
         self['comparisonValue'] = comparisonValue
+        if not Not:
+            self['not'] = Not
+        if operator != MetricOperator.OPERATOR_UNSPECIFIED:
+            self['operator'] = operator
 
 
 class MetricFilterClause (dict):
@@ -76,11 +78,12 @@ class MetricFilterClause (dict):
     """
 
     def __init__(self,
+                 filters: list[MetricFilter]
                  operator: FilterLogicalOperator =FilterLogicalOperator.OPERATOR_UNSPECIFIED,
-                 filters: list[MetricFilter]= None) -> None:
+    ) -> None:
         """
         Initialises a MetricFilterClause object.
         """
-        self['operator'] = operator
-        if filters is not None:
-            self['filters'] = filters
+        self['filters'] = filters
+        if operator != FilterLogicalOperator.OPERATOR_UNSPECIFIED:
+            self['operator'] = operator
