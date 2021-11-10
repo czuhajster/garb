@@ -24,7 +24,7 @@ Install `garb` using [pip](https://pip.pypa.io/en/stable/quickstart/):
 ```python
 import garb
 
-...
+# ...
 
 
 dateRanges = [garb.daterange.DateRange('7daysAgo', 'today')]
@@ -33,7 +33,7 @@ reportRequests = [garb.report_request.ReportRequest(VIEW_ID, dateRanges, metrics
 reportBody = garb.report_request.ReportBody(reportRequests)
 ```
 
-2. Pass the `ReportBody` as a parameter to the `batchGet` method:
+2. Pass a `ReportBody` object as a parameter to the `batchGet` method:
 
 ```python
 def get_report(analytics):
