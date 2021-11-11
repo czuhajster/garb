@@ -26,3 +26,15 @@ def test_dimension_filter():
         "expressions": None,
         "caseSensitive": False
     }
+
+def test_dimension_filter_clause():
+    """
+    Tests `DimensionFilterClause` class.
+    """
+
+    dimension_filter = dimension.DimensionFilter("ga:dimension", False,
+                                                 "REGEXP", None, False)
+    dimension_filter_clause = dimension.DimensionFilterClause("AND",
+                                                              [dimension_filter])
+
+    assert dimension_filter_clause["filters"][0] is dimension_filter
