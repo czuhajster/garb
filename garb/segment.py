@@ -74,7 +74,7 @@ class SegmentMetricFilter (dict):
                  scope: Scope,
                  metricName: str,
                  operator: SegmentMetricFilterOperator =SegmentMetricFilterOperator.UNSPECIFIED_OPERATOR,
-                 comparisonValue: str =None
+                 comparisonValue: str =None,
                  maxComparisonValue: str =None
     ) -> None:
         """Initialises a SegmentMetricFilter object.
@@ -93,7 +93,7 @@ class SegmentFilterClause (dict):
     def __init__(self,
                  Not: bool =False,
                  dimensionOrMetricFilter: Union[SegmentDimensionFilter, SegmentMetricFilter] =None
-    ) -> None
+    ) -> None:
         """Initialises a SegmentFilterClause object.
         """
         self['not'] = Not

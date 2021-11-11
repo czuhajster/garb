@@ -132,7 +132,7 @@ class RequestBody (dict):
         Returns:
           None
         """
-            self['reportRequests'].append(reportRequest)
+        self['reportRequests'].append(reportRequest)
 
     def json(self):
         """Converts request body object to JSON representation.

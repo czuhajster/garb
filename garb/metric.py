@@ -24,7 +24,7 @@ class Metric (dict):
 
     def __init__(self,
                  expression: str= None,
-                 alias: str = None
+                 alias: str = None,
                  formattingType: MetricType =MetricType.METRIC_TYPE_UNSPECIFIED
     ) -> None:
         """
@@ -35,14 +35,32 @@ class Metric (dict):
             self['alias'] = alias
         self['formattingType'] = formattingType
 
-    def setAlias(self, alias: str) -> None:
+    def set_alias(self, alias: str) -> None:
+        """
+        Sets alias for metric.
+
+        Args:
+            alias: alias for the metric
+        """
         self['alias'] = alias
 
-    def setExpression(self, expression: str) -> None:
+    def set_expression(self, expression: str) -> None:
+        """
+        Sets expression for the metric.
+
+        Args:
+            expression: expression for metric
+        """
         self['expression'] = expression
 
-    def setFormattingType(self, formattingType: MetricType) -> None:
-        self['formattingType'] = formattingType
+    def set_formatting_type(self, formatting_type: MetricType) -> None:
+        """
+        Sets formatting type for the metric.
+
+        Args:
+            formatting_type: formatting type for the metric
+        """
+        self['formattingType'] = formatting_type
 
 
 class MetricOperator (Enum):
@@ -78,7 +96,7 @@ class MetricFilterClause (dict):
     """
 
     def __init__(self,
-                 filters: list[MetricFilter]
+                 filters: list[MetricFilter],
                  operator: FilterLogicalOperator =FilterLogicalOperator.OPERATOR_UNSPECIFIED,
     ) -> None:
         """
