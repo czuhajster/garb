@@ -6,7 +6,12 @@ This module defines Sampling, ReportRequest, and RequestBody objects.
 from enum import Enum
 import json
 
-from garb import *
+from garb.daterange import DateRange
+from garb.metric import Metric, MetricFilterClause
+from garb.dimension import Dimension, DimensionFilterClause
+from garb.order import OrderBy
+from garb.pivot import Pivot
+from garb.cohort import CohortGroup
 
 class Sampling(Enum):
     """A Sampling object.
