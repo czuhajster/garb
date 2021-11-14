@@ -1,19 +1,17 @@
-from garb import *
+from garb import report_request
 
-def test_conversion_to_dictionary():
+def test_report_request():
     """
-    Test conversion of `ReportRequest` object into dictionary.
+    Tests `ReportRequest` class.
     """
 
     pass
 
-def test_json():
+def test_request_body_to_json():
     """
-    Test conversion to JSON string.
+    Tests `RequestBody` class conversion to JSON string.
     """
 
-    reportBody =  report_request.RequestBody()
+    reportBody =  report_request.RequestBody([])
     reportBodyJson = reportBody.json()
-    print(reportBodyJson)
     assert reportBodyJson == '{"reportRequests": [], "useResourceQuotas": false}'
-
