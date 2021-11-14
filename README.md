@@ -27,17 +27,17 @@ import garb
 # ...
 
 
-dateRanges = [garb.daterange.DateRange('7daysAgo', 'today')]
-metrics = [garb.daterange.Metric('ga:sessions')]
-reportRequests = [garb.report_request.ReportRequest(VIEW_ID, dateRanges, metrics)]
-reportBody = garb.report_request.ReportBody(reportRequests)
+date_ranges = [garb.daterange.DateRange('7daysAgo', 'today')]
+metrics = [garb.metric.Metric('ga:sessions')]
+report_requests = [garb.report_request.ReportRequest(VIEW_ID, date_ranges, metrics)]
+request_body = garb.report_request.RequestBody(report_requests)
 ```
 
-2. Pass a `ReportBody` object as a parameter to the `batchGet` method:
+2. Pass a `RequestBody` object as a parameter to the `batchGet` method:
 
 ```python
 def get_report(analytics):
-    return analytics.reports().batchGet(body=reportBody).execute()
+    return analytics.reports().batchGet(body=request_body).execute()
 ```
 
 ## License
