@@ -4,6 +4,7 @@
 ![Last Commit](https://img.shields.io/github/last-commit/czuhajster/garb)
 ![PyPI Version](https://img.shields.io/pypi/v/garb)
 
+
 GARB is a small Python library that provides an object-oriented interface for building requests
 for Google Analytics Reporting API v4.
 
