@@ -8,8 +8,6 @@ GARB is a small Python library that provides an object-oriented interface for bu
 for Google Analytics Reporting API v4.
 
 
-
-
 ## Installation
 
 ### Using pip
